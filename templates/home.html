@@ -1,0 +1,334 @@
+<html>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+        :root {
+            --bg-1: #f8fbff;
+            --bg-2: #e6f7ee;
+            --card: #ffffff;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --accent: #0f766e;
+            --accent-2: #0ea5e9;
+            --shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 15% 20%, rgba(14, 165, 233, .18), transparent 40%),
+                radial-gradient(circle at 85% 15%, rgba(15, 118, 110, .14), transparent 35%),
+                linear-gradient(135deg, var(--bg-1), var(--bg-2));
+            background-image:
+                linear-gradient(rgba(6, 16, 28, .55), rgba(6, 16, 28, .55)),
+                url('/static/image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 28px 24px;
+            overflow-y: auto;
+        }
+
+        .login {
+            width: min(780px, 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, .42), rgba(255, 255, 255, .22));
+            border: 1px solid rgba(255, 255, 255, .45);
+            border-radius: var(--radius);
+            box-shadow: 0 24px 45px rgba(2, 8, 23, .35);
+            padding: 28px;
+            margin: 8px 0;
+            animation: rise .5s ease-out;
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+        }
+
+        .login>h1 {
+            margin: 0 0 18px 0;
+            font-size: clamp(1.2rem, 2.2vw, 1.9rem);
+            font-family: 'Cinzel', serif;
+            letter-spacing: .7px;
+            color: #f8fafc;
+            text-transform: uppercase;
+            text-shadow: 0 3px 14px rgba(2, 8, 23, .55), 0 1px 0 rgba(255, 255, 255, .25);
+            white-space: nowrap;
+        }
+
+        legend {
+            font-size: 1rem;
+            color: #0b2f47;
+            font-weight: 500;
+        }
+
+        .mb-3 {
+            margin: 14px 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: .92rem;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .form-control {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, .72);
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-size: .95rem;
+            color: #0f172a;
+            background: rgba(255, 255, 255, .88);
+            transition: border-color .2s ease, box-shadow .2s ease, transform .05s ease;
+        }
+
+        .form-control::placeholder {
+            color: #475569;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-2);
+            box-shadow: 0 0 0 4px rgba(14, 165, 233, .18);
+        }
+
+        .btn.btn-primary {
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            cursor: pointer;
+            transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+        }
+
+        .btn.btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(14, 165, 233, .28);
+            filter: saturate(1.05);
+        }
+
+        .btn.btn-primary:active {
+            transform: translateY(0);
+        }
+
+        h2 {
+            margin-top: 18px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .72);
+            border: 1px solid rgba(255, 255, 255, .65);
+            font-size: 1rem;
+            color: #0b1d31;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(1px);
+            opacity: .5;
+        }
+
+        body::before {
+            top: -60px;
+            left: -70px;
+            background: radial-gradient(circle, rgba(14, 165, 233, .30), rgba(14, 165, 233, 0));
+            animation: floatOrbA 12s ease-in-out infinite;
+        }
+
+        body::after {
+            right: -90px;
+            bottom: -80px;
+            background: radial-gradient(circle, rgba(15, 118, 110, .26), rgba(15, 118, 110, 0));
+            animation: floatOrbB 14s ease-in-out infinite;
+        }
+
+        .login {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes floatOrbA {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(22px, 18px) scale(1.08);
+            }
+        }
+
+        @keyframes floatOrbB {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-20px, -16px) scale(1.06);
+            }
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 16px 12px;
+            }
+
+            .login>h1 {
+                font-size: .98rem;
+                letter-spacing: .35px;
+            }
+
+            .login {
+                padding: 18px;
+                border-radius: 14px;
+            }
+
+            .btn.btn-primary {
+                padding: 11px 12px;
+            }
+        }
+    </style>
+    <div class="login">
+       <h1>Student Exam Performance Indicator</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>Student Exam Performance Prediction</legend>
+        </h1>
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select class="form-control" name="gender" placeholder="Enter you Gender" required>
+                <option class="placeholder" selected disabled value="">Select your Gender</option>
+                <option value="male">
+                    Male
+                </option>
+                <option value="female">
+                    Female
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Race or Ethnicity</label>
+            <select class="form-control" name="ethnicity" placeholder="Enter you ethnicity" required>
+                <option class="placeholder" selected disabled value="">Select Ethnicity</option>
+                <option value="group A">
+                    Group A
+                </option>
+                <option value="group B">
+                    Group B
+                </option>
+                <option value="group C">
+                    Group C
+                </option>
+                <option value="group D">
+                    Group D
+                </option>
+                <option value="group E">
+                    Group E
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Parental Level of Education</label>
+            <select class="form-control" name="parental_level_of_education"
+                placeholder="Enter you Parent Education" required>
+                <option class="placeholder" selected disabled value="">Select Parent Education</option>
+                <option value="associate's degree">
+                    associate's degree
+                </option>
+                <option value="bachelor's degree">
+                    bachelor's degree
+                </option>
+                <option value="high school">
+                    high school
+                </option>
+                <option value="master's degree">
+                    master's degree
+                </option>
+                <option value="some college">
+                    some college
+                </option>
+                <option value="some high school">
+                    some high school
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Lunch Type</label>
+            <select class="form-control" name="lunch" placeholder="Enter you Lunch" required>
+                <option class="placeholder" selected disabled value="">Select Lunch Type</option>
+                <option value="free/reduced">
+                    free/reduced
+                </option>
+                <option value="standard">
+                    standard
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Test preparation Course</label>
+            <select class="form-control" name="test_preparation_course" placeholder="Enter you Course"
+                required>
+                <option class="placeholder" selected disabled value="">Select Test_course</option>
+                <option value="none">
+                    None
+                </option>
+                <option value="completed">
+                    Completed
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Writing Score out of 100</label>
+            <input class="form-control" type="number" name="reading_score"
+                placeholder="Enter your Reading score" min='0' max='100' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Reading Score out of 100</label>
+            <input class="form-control" type="number" name="writing_score"
+                placeholder="Enter your Reading Score" min='0' max='100' />
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict your Maths Score" required />
+        </div>
+    </form>
+    <h2>
+       THE  prediction is {{results}}
+    </h2>
+   <body>
+</html>
